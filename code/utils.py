@@ -58,7 +58,7 @@ def custom_dataset(classes=[0,1],path="/home/raja/Desktop/MICCAI/data/", fractio
     # Custom_data has images from only selected classes; x_train & y_train have 
     return custom_data, np.array(x_train),np.array(y_train)
 
-def custom_random_dataset(classes=[0,1],path="/home/raja/Desktop/MICCAI/data/", fraction=0.2):
+def custom_random_dataset(classes=[0,1],path="/home/raja/Desktop/MICCAI/data/", fraction=1.0):
     import numpy as np
     from sklearn.model_selection import train_test_split
 
