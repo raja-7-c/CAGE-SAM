@@ -19,6 +19,16 @@ def calculate_brown_score(image):
 
     return brown_score
 
+def calculate_green_score(image):
+
+    # Extract the red channel
+    green_channel = image[:, :, 1]
+
+    # Calculate the brown score as the mean intensity of the red channel
+    green_score = np.mean(green_channel)
+
+    return green_score    
+
 def calculate_blue_score(image):
 
     # Extract the red channel
@@ -28,6 +38,23 @@ def calculate_blue_score(image):
     blue_score = np.mean(blue_channel)
 
     return blue_score
+
+black_range =  [15, 25, 15, 25, 15, 25] 
+
+def compute_black_score(image_patch):
+    black_pixels = np.count_nonzero(
+        (image_patch[:, :, 0] >= black_range[0]) &
+        (image_patch[:, :, 0] <= black_range[1]) &
+        (image_patch[:, :, 1] >= black_range[2]) &
+        (image_patch[:, :, 1] <= black_range[3]) &
+        (image_patch[:, :, 2] >= black_range[4]) &
+        (image_patch[:, :, 2] <= black_range[5])
+    )
+    black_score = black_pixels
+    return black_score
+
+
+
 
 blue_range = [60, 105, 55, 120, 85, 170]  # Example blue color range in RGB channels
 blue_range2 = [10, 55, 0, 26, 0, 45]      # Example blue color range in RGB channels
